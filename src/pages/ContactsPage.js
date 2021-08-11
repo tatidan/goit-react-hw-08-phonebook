@@ -7,6 +7,10 @@ import Section from "../components/section/Section";
 import { fetchContacts, getLoading } from "../redux/contacts";
 
 class ContactsPage extends Component {
+  componentDidMount() {
+    this.props.fetchContacts();
+  }
+
   state = {};
   render() {
     return (

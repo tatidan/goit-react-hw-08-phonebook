@@ -15,7 +15,7 @@ const styles = {
 
 class RegisterPage extends Component {
   state = {
-    avatarName: "",
+    name: "",
     email: "",
     password: "",
   };
@@ -27,11 +27,11 @@ class RegisterPage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onRegister(this.state);
-    this.setState({ avatarName: "", email: "", password: "" });
+    this.setState({ name: "", email: "", password: "" });
   };
 
   render() {
-    const { email, password, avatarName } = this.state;
+    const { email, password, name } = this.state;
 
     return (
       <div>
@@ -44,8 +44,8 @@ class RegisterPage extends Component {
           <label style={styles.label}>
             <input
               type="text"
-              name="avatarName"
-              value={avatarName}
+              name="name"
+              value={name}
               placeholder="Name"
               onChange={this.handleChange}
             />

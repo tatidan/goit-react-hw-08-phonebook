@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+import { getUserName, logoutOperation } from "../../redux/auth";
+import defaultAvatar from "../../images/default-avatar.png";
 
 const styles = {
   container: {
@@ -6,7 +9,7 @@ const styles = {
     alignItems: "center",
   },
   avatar: {
-    marginRight: 4,
+    borderRadius: "50%",
   },
   name: {
     fontWeight: 700,
@@ -17,13 +20,22 @@ const styles = {
 const UserMenu = ({ avatar, name, onLogout }) => {
   return (
     <div style={styles.container}>
-      <img src={avatar} alt="" width="32" style={styles.avatar} />
       <span style={styles.name}>Welcome, {name}</span>
-      <button type="button" onClick={onLogout}>
+      <img src={avatar} alt="" width="32" style={styles.avatar} />
+      <button type="button" onClick={onLogout} className="deleteBtn">
         Logout
       </button>
     </div>
   );
 };
 
-export default UserMenu;
+const mapStateToProps = (state) => ({
+  name: getUserName(state),
+  avatar: defaultAvatar,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onLogout: logoutOperation,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { loginOperation } from "../redux/auth";
 
 const styles = {
   form: {
@@ -23,6 +25,7 @@ class LoginPage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.onLogin(this.state);
     this.setState({ name: "", email: "", password: "" });
   };
 
@@ -55,10 +58,17 @@ class LoginPage extends Component {
               onChange={this.handleChange}
             />
           </label>
+          <button type="submit" onSubmit={this.handleSubmit}>
+            Login
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default LoginPage;
+const mapDispatchToProps = {
+  onLogin: loginOperation,
+};
+
+export default connect(null, mapDispatchToProps)(LoginPage);

@@ -1,7 +1,9 @@
 import React from "react";
-import AuthNav from "../UserMenu/AuthNav";
-import Navigation from "../UserMenu/Navigation";
-import UserMenu from "../UserMenu/UserMenu";
+import AuthNav from "./AuthNav";
+import Navigation from "./Navigation";
+import UserMenu from "./UserMenu/UserMenu";
+import { getIsAuthenticated } from "../redux/auth";
+import { connect } from "react-redux";
 // import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const styles = {
@@ -20,10 +22,15 @@ const AppBar = ({ isAuthenticated }) => {
       // className="header"
     >
       <Navigation />
+      {/* <UserMenu /> */}
       {isAuthenticated ? <UserMenu /> : <AuthNav />}
       {/* <LanguageSwitcher /> */}
     </header>
   );
 };
 
-export default AppBar;
+const mapStateToProps = (state) => ({
+  isAuthenticated: getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(AppBar);

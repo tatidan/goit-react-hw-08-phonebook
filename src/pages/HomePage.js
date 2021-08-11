@@ -10,13 +10,16 @@ const styles = {
     fontWeight: 500,
     fontSize: 48,
     textAlign: "center",
+    color: "#915491",
   },
 };
 
 const HomePage = () => {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Home page</h1>
+      <span>❤️</span>
+      <h1 style={styles.title}>Home is where your heart is</h1>
+      <span>❤️</span>
     </div>
   );
 };
