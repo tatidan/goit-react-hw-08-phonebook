@@ -2,11 +2,19 @@ import { lazy } from "react";
 
 export const mainRoutes = [
   {
+    name: "home",
+    path: "/",
+    exact: true,
+    component: lazy(() =>
+      import("../pages/HomePage" /* webpackChuckName: "HomePage"*/)
+    ),
+  },
+  {
     name: "register",
     path: "/register",
     exact: true,
     component: lazy(() =>
-      import("../pages/RegisterPage" /* webpackChuckName: "HomePage"*/)
+      import("../pages/RegisterPage" /* webpackChuckName: "RegisterPage"*/)
     ),
   },
   {
@@ -14,7 +22,7 @@ export const mainRoutes = [
     path: "/login",
     exact: false,
     component: lazy(() =>
-      import("../pages/LoginPage" /* webpackChuckName: "MovieDetailsPage"*/)
+      import("../pages/LoginPage" /* webpackChuckName: "LoginPage"*/)
     ),
   },
   {
@@ -22,7 +30,7 @@ export const mainRoutes = [
     path: "/contacts",
     exact: true,
     component: lazy(() =>
-      import("../pages/ContactsPage" /* webpackChuckName: "MoviesPage"*/)
+      import("../pages/ContactsPage" /* webpackChuckName: "ContactsPage"*/)
     ),
   },
 ];
