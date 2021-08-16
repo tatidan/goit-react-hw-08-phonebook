@@ -6,6 +6,17 @@ import ContactsListContainer from "../components/contacts/ContactsListContainer"
 import Section from "../components/section/Section";
 import { fetchContacts, getLoading } from "../redux/contacts";
 
+const styles = {
+  image: {
+    height: "100vh",
+    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    opacity: 0.2,
+  },
+};
+
 class ContactsPage extends Component {
   componentDidMount() {
     this.props.fetchContacts();
@@ -14,7 +25,7 @@ class ContactsPage extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <>
         <Section title="Phonebook">
           <ContactsForm />
         </Section>
@@ -23,7 +34,8 @@ class ContactsPage extends Component {
           {this.props.isLoadingContacts && <h2>Loading contacts...</h2>}
           <ContactsListContainer />
         </Section>
-      </div>
+        <div style={styles.image}></div>
+      </>
     );
   }
 }

@@ -9,10 +9,16 @@ const styles = {
     textDecoration: "none",
     padding: 12,
     fontWeight: 700,
-    color: "#885e88",
+    color: "#2014ce",
   },
   activeLink: {
-    color: "#ee82ee",
+    color: "#129ddd",
+  },
+  icon: {
+    width: "20px",
+    height: "20px",
+    fill: "#2014ce",
+    marginRight: "5px",
   },
 };
 
@@ -22,17 +28,13 @@ const Navigation = ({ isAuthenticated }) => {
       <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
         Home
       </NavLink>
+
       {isAuthenticated && (
         <NavLink
           to="/contacts"
           style={styles.link}
           activeStyle={styles.activeLink}
-          // className="NavLink"
-          // activeClassName="NavLink--active"
         >
-          {/* <svg className="NavLink__icon">
-          <use href={sprite + "#icon-video-camera"}></use>
-        </svg> */}
           Contacts
         </NavLink>
       )}

@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { Switch } from "react-router-dom";
 import { Suspense } from "react";
 import { connect } from "react-redux";
-import { mainRoutes } from "./routes/mainRoutes";
 import AppBar from "./components/AppBar";
 import ContactsPage from "./pages/ContactsPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
-import "./index.css";
-
+import { mainRoutes } from "./routes/mainRoutes";
 import { getCurrentUserOperation } from "./redux/auth";
+import "./index.css";
 
 class App extends Component {
   componentDidMount() {
@@ -23,12 +22,12 @@ class App extends Component {
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             {mainRoutes.map(
-              ({ path, exact, component, restricted, redirect }) => (
+              ({ path, exact, component, restricted, redirectTo }) => (
                 <PublicRoute
                   path={path}
                   component={component}
                   restricted={restricted}
-                  redirect={redirect}
+                  redirectTo={redirectTo}
                   exact={exact}
                   key={path}
                 />
@@ -42,6 +41,7 @@ class App extends Component {
               redirectTo="/login"
             />
           </Switch>
+          {/* <SignInSide /> */}
         </Suspense>
       </>
     );

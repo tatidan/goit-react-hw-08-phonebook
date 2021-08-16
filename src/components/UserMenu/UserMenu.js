@@ -34,8 +34,12 @@ const mapStateToProps = (state) => ({
   avatar: defaultAvatar,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = {
   onLogout: logoutOperation,
-});
+};
+
+// const mapDispatchToProps = (dispatch) => ({
+//   onLogout: () => dispatch(logoutOperation()),
+// });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

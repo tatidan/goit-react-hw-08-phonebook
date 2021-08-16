@@ -5,8 +5,8 @@ export const mainRoutes = [
     name: "home",
     path: "/",
     exact: true,
-    restricted: true,
-    redirect: "/",
+    restricted: false,
+    redirectTo: "/",
     component: lazy(() =>
       import("../pages/HomePage" /* webpackChuckName: "HomePage"*/)
     ),
@@ -16,7 +16,7 @@ export const mainRoutes = [
     path: "/register",
     exact: true,
     restricted: true,
-    redirect: "/contacts",
+    redirectTo: "/contacts",
     component: lazy(() =>
       import("../pages/RegisterPage" /* webpackChuckName: "RegisterPage"*/)
     ),
@@ -26,7 +26,7 @@ export const mainRoutes = [
     path: "/login",
     exact: false,
     restricted: true,
-    redirect: "/contacts",
+    redirectTo: "/contacts",
     component: lazy(() =>
       import("../pages/LoginPage" /* webpackChuckName: "LoginPage"*/)
     ),
@@ -35,6 +35,8 @@ export const mainRoutes = [
   //   name: "contacts",
   //   path: "/contacts",
   //   exact: true,
+  //   restricted: false,
+  //   redirect: "/contacts",
   //   component: lazy(() =>
   //     import("../pages/ContactsPage" /* webpackChuckName: "ContactsPage"*/)
   //   ),

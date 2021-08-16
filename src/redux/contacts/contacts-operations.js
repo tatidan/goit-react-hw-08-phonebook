@@ -10,41 +10,25 @@ import {
   fetchContactsSuccess,
   fetchContactsError,
 } from "./contacts-actions";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://shop-49287-default-rtdb.firebaseio.com";
-// axios.defaults.baseUrl = "https://connections-api.herokuapp.com";
+axios.defaults.baseUrl = "https://connections-api.herokuapp.com";
 
 export const fetchContacts = () => async (dispatch) => {
   dispatch(fetchContactsRequest());
 
   try {
-    const { data } = await axios.get("/contacts.json");
-    dispatch(
-      fetchContactsSuccess(
-        Object.keys(data).map((key) => ({ id: key, ...data[key] }))
-      )
-    );
+    const { data } = await axios.get("/contacts");
+    dispatch(fetchContactsSuccess(data));
   } catch (error) {
     dispatch(fetchContactsError(error.message));
   }
 };
 
-// const fetchContactsAsync = createAsyncThunk(
-//   "contacts/fetchContacts",
-//   async () => {
-//     const response = await axios.get("/contacts");
-//     return await response.json();
-//     // const { data } = await axios.get("/contacts");
-//     // return await data;
-//   }
-// );
-
 export const addNewContact = (contact) => async (dispatch) => {
   dispatch(addContactRequest());
   try {
-    const { data } = await axios.post("/contacts.json", contact);
-    dispatch(addContactSuccess({ id: data.name, ...contact }));
+    const { data } = await axios.post("/contacts", contact);
+    dispatch(addContactSuccess(data));
   } catch (error) {
     dispatch(addContactError(error.message));
   }
@@ -52,9 +36,8 @@ export const addNewContact = (contact) => async (dispatch) => {
 
 export const removeContact = (contactId) => async (dispatch) => {
   dispatch(removeContactRequest());
-
   try {
-    await axios.delete(`/contacts/${contactId}.json`);
+    await axios.delete(`/contacts/${contactId}`);
     dispatch(removeContactSuccess(contactId));
   } catch (error) {
     dispatch(removeContactError(error.message));
@@ -91,3 +74,17 @@ export const removeContact = (contactId) => async (dispatch) => {
 //   .delete(`/contacts/${contactId}.json`)
 //   .then(() => dispatch(removeContactSuccess(contactId)))
 //   .catch((error) => dispatch(removeContactError(error)));
+
+// ====================================================
+
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+
+// const fetchContactsAsync = createAsyncThunk(
+//   "contacts/fetchContacts",
+//   async () => {
+//     const response = await axios.get("/contacts");
+//     return await response.json();
+//     // const { data } = await axios.get("/contacts");
+//     // return await data;
+//   }
+// );

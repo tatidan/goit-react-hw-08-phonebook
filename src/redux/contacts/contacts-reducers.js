@@ -16,8 +16,6 @@ import {
 const contacts = createReducer([], {
   [fetchContactsSuccess]: (_, { payload }) => payload,
   [addContactSuccess]: (state, action) => {
-    console.log(action);
-    console.log(state);
     return [...state, action.payload];
   },
   [removeContactSuccess]: (state, action) =>

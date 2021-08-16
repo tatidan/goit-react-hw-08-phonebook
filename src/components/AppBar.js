@@ -4,7 +4,6 @@ import Navigation from "./Navigation";
 import UserMenu from "./UserMenu/UserMenu";
 import { getIsAuthenticated } from "../redux/auth";
 import { connect } from "react-redux";
-// import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const styles = {
   header: {
@@ -17,14 +16,9 @@ const styles = {
 
 const AppBar = ({ isAuthenticated }) => {
   return (
-    <header
-      style={styles.header}
-      // className="header"
-    >
+    <header style={styles.header}>
       <Navigation />
-      {/* <UserMenu /> */}
       {isAuthenticated ? <UserMenu /> : <AuthNav />}
-      {/* <LanguageSwitcher /> */}
     </header>
   );
 };

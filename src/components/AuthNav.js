@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// import sprite from "../../icons/sprite.svg";
 
 const styles = {
   link: {
@@ -8,10 +7,10 @@ const styles = {
     textDecoration: "none",
     padding: 12,
     fontWeight: 700,
-    color: "#885e88",
+    color: "#2014ce",
   },
   activeLink: {
-    color: "#ee82ee",
+    color: "#129ddd",
   },
 };
 
@@ -23,25 +22,11 @@ const AuthNav = () => {
         to="/register"
         style={styles.link}
         activeStyle={styles.activeLink}
-        // className="NavLink"
-        // activeClassName="NavLink--active"
       >
-        {/* <svg className="NavLink__icon">
-            <use href={sprite + "#icon-home"}></use>
-          </svg> */}
         Register
       </NavLink>
 
-      <NavLink
-        to="/login"
-        style={styles.link}
-        activeStyle={styles.activeLink}
-        // className="NavLink"
-        // activeClassName="NavLink--active"
-      >
-        {/* <svg className="NavLink__icon">
-            <use href={sprite + "#icon-video-camera"}></use>
-          </svg> */}
+      <NavLink to="/login" style={styles.link} activeStyle={styles.activeLink}>
         Login
       </NavLink>
     </div>

@@ -14,14 +14,7 @@ import {
   registerSuccess,
 } from "./auth-actions";
 
-// axios.defaults.baseURL = "https://shop-49287-default-rtdb.firebaseio.com";
-// axios.defaults.baseUrl = "https://connections-api.herokuapp.com";
-// axios.defaults.baseUrl = "https://lpj-tasker.herokuapp.com";
-// axios.defaults.baseUrl = "https://goit-phonebook-api.herokuapp.com";
-
-const BASE_url = "https://connections-api.herokuapp.com";
-// const BASE_url = "https://goit-phonebook-api.herokuapp.com";
-// https://connections-api.herokuapp.com/users/signup
+axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
 const token = {
   set(token) {
@@ -36,7 +29,7 @@ export const registerOperation = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
 
   try {
-    const response = await axios.post(BASE_url + "/users/signup", credentials);
+    const response = await axios.post("/users/signup", credentials);
     token.set(response.data.token);
     dispatch(registerSuccess(response.data));
   } catch (error) {
@@ -48,7 +41,7 @@ export const loginOperation = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
 
   try {
-    const response = await axios.post(BASE_url + "/users/login", credentials);
+    const response = await axios.post("/users/login", credentials);
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
   } catch (error) {
